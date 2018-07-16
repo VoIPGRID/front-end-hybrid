@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="nl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Default partner - Porting requests</title>
+        <link rel="stylesheet" href="./voipgrid_files/vendor.css">
+        <link rel="stylesheet" href="./voipgrid_files/brand.css">
+        <link rel="stylesheet" href="./voipgrid_files/hybrid.css">
+        <link rel="stylesheet" href="./voipgrid_files/base-admin-responsive.css">
+        <link rel="stylesheet" href="./voipgrid_files/style.css">
+
+        <link rel="modulepreload" href="/vendor/react.development-16.4.1.mjs">
+        <link rel="modulepreload" href="/vendor/react-dom.development-16.4.1.mjs">
+    </head>
+    <body>
+            <div class="vg-wrapper">
+                <header class="vg-app-header">
+                    <a href="http://localhost:8001/" class="vg-app-header-logo">
+                        <img src="./voipgrid_files/logo-default.png" class="vg-app-header-logo"></a>
+                        <ul class="vg-navigation-top">
+                            <li>
+                                <select id="js-select-brand" class="vg-form-input select3" tabindex="-98">
+                                    <optgroup label="Branded Partners">
+                                        <option value="540100" selected="">Default partner</option>
+                                        <option value="540102">Showcase color branding</option>
+                                    </optgroup>
+                                </select><div class="btn-group select3 show-tick vg-form-input"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="js-select-brand" title="Default partner"><span class="filter-option pull-left">Default partner</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open"><ul class="dropdown-menu inner" role="menu"><li class="dropdown-header " data-optgroup="1"><span class="text">Branded Partners</span></li><li data-original-index="0" data-optgroup="1" data-optgroup-index="0" class="selected"><a tabindex="0" class="opt  " style="" data-tokens="null"><span class="text">Default partner</span><span class="icon icon-ok check-mark"></span></a></li><li data-original-index="1" data-optgroup="1" data-optgroup-index="1"><a tabindex="0" class="opt  " style="" data-tokens="null"><span class="text">Showcase color branding</span><span class="icon icon-ok check-mark"></span></a></li></ul></div></div>
+                            </li>
+                            <li>
+                                <a id="wiki-url" data-category="button" data-label="Support icon" target="_blank" href="http://lara-baker.biz/index.php/PortingRequest" class="ga-event" rel="noopener noreferrer">
+                                    <i class="icon-question-sign"></i> Support
+        </a>
+                            </li>
+                            <li class="vg-dropdown-navigation">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-cog"></i>
+                                    Partner account
+        <b class="caret"></b>
+                                </a>
+                                <ul class="vg-dropdown-navigation-sub">
+                                    <li class="vg-dropdown-navigation-subitem">
+                                        <a href="javascript:void(0)">Billing</a>
+                                        <ul class="vg-dropdown-navigation-sub">
+                                            <li>
+                                                <a href="http://localhost:8001/partner/540100/billing/callbillingitem/">Call cost</a>
+                                            </li>
+                                            <li><a href="http://localhost:8001/partner/540100/billing/subscriptionbillingitem/">Billed services</a></li>
+                                            <li>
+                                                <a href="http://localhost:8001/partner/540100/billing/prepaid/">Prepaid</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://localhost:8001/export/">Downloads</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="vg-dropdown-navigation-subitem">
+                                        <a href="javascript:void(0)">Beheer</a>
+                                        <ul class="vg-dropdown-navigation-sub">
+                                            <li>
+                                                <a href="http://localhost:8001/billing/subscription/">Used services</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://localhost:8001/billing/product/">Product overview</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://localhost:8001/billing/priceplan/">Priceplans</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="vg-dropdown-navigation">
+                                <a href="javascript:void(0)" data-toggle="dropdown">
+                                    <i class="icon-user"></i> Personal <b class="caret"></b>
+                                </a>
+                                <ul class="vg-dropdown-navigation-sub">
+                                    <li>
+                                        <a href="http://localhost:8001/user/personal_settings/">Personal settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://localhost:8001/user/logout/">Afmelden</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+    </header>
+                    <nav role="navigation" aria-label="Main Navigation" class="vg-navigation-wrapper">
+                        <div class="vg-navigation-mobile-toggle">
+                            <a href="http://localhost:8001/porting/overview#" class="js-open-mobile-nav-settings"><i class="icon-cog"></i></a>
+                            <a href="http://localhost:8001/porting/overview#" class="js-open-mobile-nav">
+                                <span class="vg-hamburger-nav-icon">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </a>
+                        </div>
+                        <ul class="vg-navigation">
+                            <li class="active">
+                                <a href="http://localhost:8001/partner/" class="vg-navigation-link">
+                                    <i class="icon-group"></i>
+                                    <span>Partners</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8001/client/" class="vg-navigation-link">
+                                    <i class="icon-user"></i>
+                                    <span>Clients</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8001/partner/540100/phoneorder/" class="vg-navigation-link">
+                                    <i class="icon-shopping-cart"></i>
+                                    <span>
+                                        Orders
+                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8001/partner/540100/stats/" class="vg-navigation-link">
+                                    <i class="icon-signal"></i>
+                                    <span>Partner statistics</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8001/partner/540100/call/" class="vg-navigation-link">
+                                    <i class="icon-comments"></i>
+                                    <span>Calls</span>
+                                </a>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav aria-label="Breadcrumb">
+                        <ol class="vg-breadcrumb vg-list-inline">
+                            <li class="vg-list-inline-item">
+                                <a href="http://localhost:8001/" class="vg-breadcrumb-home">Voorpagina</a>
+                            </li>
+                            <li class="vg-list-inline-item">
+                                <a href="http://localhost:8001/partner/" class="vg-breadcrumb-link">Partners</a>
+                            </li>
+                            <li class="vg-list-inline-item">
+                                <a href="http://localhost:8001/client/" class="vg-breadcrumb-link">Clients</a>
+                            </li>
+                            <li class="vg-list-inline-item" aria-current="page">
+                                <a href="http://localhost:8001/porting/overview" class="vg-breadcrumb-link">Porting requests</a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <main>
+                        <div id=app></div>
+                        <div class="vg-grid">
+                            <div class="vg-grid-content" id="js-paging_container">
+                                <div class="vg-grid-header">
+                                    <h1 class="vg-grid-heading vg-h1">Porting requests <small>(0)</small></h1>
+                                    <div class="vg-button-group">
+                                    </div>
+                                </div>
+                                <div class="vg-table-wrapper">
+                                    <div id="porting-table" class="dataTables_wrapper no-footer">
+                                        <!-- <table class="vg-table  dataTable no-footer" id="DataTables_Table_0" role="grid" style="position: relative;">
+                                        <thead style="width: 974px;">
+                                            <tr role="row"><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Partner: activate to sort column ascending" style="width: 61px;">Partner</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Client: activate to sort column ascending" style="width: 48px;">Client</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Requested date: activate to sort column ascending" style="width: 121px;">Requested date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Number start: activate to sort column ascending" style="width: 103px;">Number start</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Number end: activate to sort column ascending" style="width: 96px;">Number end</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 54px;">Status</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 63px;">Actions</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created at: activate to sort column ascending" style="width: 82px;">Created at</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created by: activate to sort column ascending" style="width: 86px;">Created by</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd"><td valign="top" colspan="9" class="dataTables_empty">No results</td></tr></tbody>
+                                        <thead style="width: 974px; overflow-x: hidden; position: absolute; top: 0px; left: 0px; box-sizing: unset;" tabindex="-1">
+                                            <tr role="row" style="display: block; width: 974px;"><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Partner: activate to sort column ascending" style="width: 67px;">Partner</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Client: activate to sort column ascending" style="width: 52px;">Client</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Requested date: activate to sort column ascending" style="width: 122px;">Requested date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Number start: activate to sort column ascending" style="width: 100px;">Number start</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Number end: activate to sort column ascending" style="width: 91px;">Number end</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 59px;">Status</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 68px;">Actions</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created at: activate to sort column ascending" style="width: 74px;">Created at</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created by: activate to sort column ascending" style="width: 81px;">Created by</th></tr>
+                                        </thead></table> -->
+                                    </div>
+                                    <nav class="vg-tabletools" role="navigation" aria-label="Pagination Navigation">
+                                        <!--clientside nav-->
+    <ul class="vg-pagination js-pagination" style="display: none;">
+                                            <li class="vg-pagination-item disabled">
+                                                <a href="javascript:void(0)" class="vg-pagination-link js-pagination-previous">« Previous</a>
+                                            </li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-first">1</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><span class="vg-pagination-dots js-pagination-dots-first">..</span></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p-5">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p-4">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p-3">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p-2">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p-1">&nbsp;</a></li>
+                                            <li class="vg-pagination-item js-pagination-active">
+                                                <a href="javascript:void(0)" class="vg-pagination-link">1</a>
+                                            </li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p1">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p2">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p3">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p4">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-page p5">&nbsp;</a></li>
+                                            <li class="vg-pagination-item" style="display: none;"><span class="vg-pagination-dots js-pagination-dots-last">..</span></li>
+                                            <li class="vg-pagination-item" style="display: none;"><a href="javascript:void(0)" class="vg-pagination-link js-pagination-last">0</a></li>
+                                            <li class="vg-pagination-item">
+                                                <a href="javascript:void(0)" class="vg-pagination-link js-pagination-next">Volgende »</a>
+                                            </li>
+                                        </ul>
+                                        <div class="vg-tabletools-items">
+                                            <label for="pagesize" class="vg-form-label vg-form-inline">Show <span class="vg-hidden-visually">results per page</span></label>
+                                            <select id="pagesize" name="pagesize" class="vg-form-input vg-form-inline">
+                                                <option id="pagesize-10" value="10">10</option>
+                                                <option id="pagesize-25" value="25">25</option>
+                                                <option id="pagesize-100" value="100">100</option>
+                                            </select>
+                                            <span class="vg-form-label vg-form-inline">results<span>
+                                            </span></span></div>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="vg-grid-sidebar vg-filter" id="js-filters">
+                                <div class="vg-panel">
+                                    <form id="filterform" class="js-prevent-double-submission">
+                                        <fieldset>
+                                            <legend class="vg-hidden-visually">Filters</legend>
+                                            <div class="vg-form-group vg-form-group-sep">
+                                                <label for="search-query" class="vg-form-label vg-hidden-visually">Zoeken</label>
+                                                <div class="vg-form-append vg-form-prepend js-input-clear">
+                                                    <span class="vg-form-append-addon"><i class="icon-search"></i></span>
+                                                    <input id="search-query" type="text" name="search_query" placeholder="Zoeken" value="" class="vg-form-input">
+                                                        <a class="vg-form-prepend-addon js-input-clear-link" href="javascript:void(0)" title="Clear search" style="display: none;"><i class="icon-remove-sign"></i> <span class="vg-hidden-visually">Clear search</span></a>
+                        </div>
+                                                </div>
+                                                <div class="vg-form-group">
+                                                    <label for="show_agreed" class="vg-form-label">Show agreed</label>
+                                                    <select id="show_agreed" name="show_agreed" class="vg-form-input">
+                                                        <option selected="selected" value="1">Ja</option>
+                                                        <option value="0">Nee</option>
+                                                    </select>
+                                                </div>
+                                                <div class="vg-form-group">
+                                                    <label for="show_denied" class="vg-form-label">Show denied</label>
+                                                    <select id="show_denied" name="show_denied" class="vg-form-input">
+                                                        <option selected="selected" value="1">Ja</option>
+                                                        <option value="0">Nee</option>
+                                                    </select>
+                                                </div>
+                                                <div class="vg-form-group">
+                                                    <label for="show_blocked" class="vg-form-label">Show reviewed</label>
+                                                    <select id="show_blocked" name="show_blocked" class="vg-form-input">
+                                                        <option selected="selected" value="1">Ja</option>
+                                                        <option value="0">Nee</option>
+                                                    </select>
+                                                </div>
+                                                <div class="vg-form-group">
+                                                    <label for="show_history" class="vg-form-label">Show history</label>
+                                                    <select id="show_history" name="show_history" class="vg-form-input">
+                                                        <option value="1">Ja</option>
+                                                        <option selected="selected" value="0">Nee</option>
+                                                    </select>
+                                                </div>
+                                                <input id="hidden-page-number" type="hidden" name="page" value="">
+                                                    <button type="submit" class="vg-button vg-button-full vg-button-primary">Apply</button>
+                                                    <a href="http://localhost:8001/porting/overview" class="vg-button vg-button-full vg-button-neutral">Reset filters</a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+                                </div>
+    </main>
+                        </div>
+
+<!-- none ecmascript module supporting browsers -->
+<script nomodule src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script nomodule src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script nomodule src="/PortingTable.js"></script>
+<script nomodule>
+    React && ReactDOM && ReactDOM.render(React.createElement(VoIPGRID.PortingTable), document.getElementById('porting-table'));
+</script>
+<!-- END none ecmascript module supporting browsers -->
+
+<!-- ecmascript module supporting browsers -->
+<script type="module">
+    import { createElement } from './vendor/react.development-16.4.1.mjs';
+    import { render } from './vendor/react-dom.development-16.4.1.mjs';
+    import Component from './PortingTable.mjs';
+
+    render(createElement(Component), document.getElementById('porting-table'));
+    </script>
+<!-- END ecmascript module supporting browsers -->
+
+</body></html>
