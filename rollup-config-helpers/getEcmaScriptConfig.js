@@ -12,13 +12,6 @@ module.exports = function getEcmaScriptConfig(
   outputDirectory = settings.outputDirectory
 ) {
   const baseName = basename(filePath, extname(filePath));
-  const watch =
-    process.env.BUILD === 'development'
-      ? {
-          include: filePath,
-          clearScreen: false
-        }
-      : false;
 
   return {
     input: filePath,
@@ -41,6 +34,9 @@ module.exports = function getEcmaScriptConfig(
       }),
       commonjs()
     ],
-    watch
+    watch: {
+      include: filePath,
+      clearScreen: false
+    }
   };
 };

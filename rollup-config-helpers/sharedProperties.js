@@ -2,9 +2,12 @@ const { join, extname } = require('path');
 const settings = require('./settings');
 const getOutputPath = require('./getOutputPath');
 
+function getEnvironmentSuffix () {
+  return process.env.BUILD === 'development' ? '.development' : '';
+}
 const paths = {
-  react: `/vendor/react.development-${settings.reactVersion}.mjs`,
-  'react-dom': `/vendor/react-dom.development-${settings.reactVersion}.mjs`
+  react: `${settings.serveModulesFrom}vendor/react${getEnvironmentSuffix()}-${settings.reactVersion}.mjs`,
+  'react-dom': `${settings.serveModulesFrom}vendor/react-dom${getEnvironmentSuffix()}-${settings.reactVersion}.mjs`
 };
 const globals = {
   react: 'React',

@@ -30,7 +30,9 @@ const outputDefault = [
   {
     input: [
       `src/vendor/react.development-${settings.reactVersion}.mjs`,
-      `src/vendor/react-dom.development-${settings.reactVersion}.mjs`
+      `src/vendor/react-dom.development-${settings.reactVersion}.mjs`,
+      `src/vendor/react-${settings.reactVersion}.mjs`,
+      `src/vendor/react-dom-${settings.reactVersion}.mjs`
     ],
     experimentalCodeSplitting: true,
     output: {

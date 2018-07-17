@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./scripts/dev.js",
-    "build": "rollup -c --environment=BUILD:production"
+    "build": "node ./scripts/prod.js"
   },
   "author": "",
   "license": "ISC",

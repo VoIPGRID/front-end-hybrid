@@ -262,22 +262,35 @@
                         </div>
 
 <!-- none ecmascript module supporting browsers -->
+
+<!-- ONCE PER PAGE THAT HAS HYBRID FRONT END APPS -->
 <script nomodule src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 <script nomodule src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<!-- /ONCE PER PAGE THAT HAS HYBRID FRONT END APPS -->
+
+<!-- ONCE PER TYPE OF HYBRID FRONT END APP -->
 <script nomodule src="/PortingTable.js"></script>
+<!-- /ONCE PER TYPE OF HYBRID FRONT END APP -->
+
+<!-- ONCE PER HYBRID FRONT END APP -->
 <script nomodule>
     React && ReactDOM && ReactDOM.render(React.createElement(VoIPGRID.PortingTable), document.getElementById('porting-table'));
-</script>
+    </script>
+<!-- /ONCE PER HYBRID FRONT END APP -->
+
 <!-- END none ecmascript module supporting browsers -->
 
 <!-- ecmascript module supporting browsers -->
+<!-- ONCE PER HYBRID FRONT END APP -->
 <script type="module">
     import { createElement } from './vendor/react.development-16.4.1.mjs';
     import { render } from './vendor/react-dom.development-16.4.1.mjs';
     import Component from './PortingTable.mjs';
 
     render(createElement(Component), document.getElementById('porting-table'));
-    </script>
+</script>
+<!-- /ONCE PER HYBRID FRONT END APP -->
 <!-- END ecmascript module supporting browsers -->
+
 
 </body></html>
