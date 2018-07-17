@@ -7,3 +7,6 @@ During development it spins up a local webserver to serve these modules so they 
 
 # Development
 clone this repo and run ```$ npm i``` to install all dependencies, than run ```$ npm start``` to start development.
+
+# todo
+combine the built sources in a shared.js file (so those modules can be loaded in one go if no native Ecmascript module support) and minify built sources in ```process.env.BUILD === 'production'``` scenarios

@@ -1,4 +1,3 @@
-// "rollup -c --environment=BUILD:production"
 process.env.BUILD = 'production';
 
 const chalk = require('chalk');
@@ -9,6 +8,7 @@ const { join } = require('path');
 const getConfiguration = require('../rollup-config-helpers/getConfiguration');
 const { outputDirectory } = require('../rollup-config-helpers/settings');
 
+// taken from the documentation at https://rollupjs.org/guide/en#inputoptions
 const inputOptions = [
   'input', // the only required option
   'external',
@@ -32,6 +32,7 @@ const inputOptions = [
   'optimizeChunks',
   'chunkGroupingSize'
 ];
+// taken from the documentation at https://rollupjs.org/guide/en#outputoptions
 const outputOptions = [
   'format', // required
   'file',
@@ -104,12 +105,4 @@ del([join(__dirname, '..', outputDirectory, '*')])
   .then(() => {
     console.log(chalk.green('finished rollup build'));
   })
-  // .then(o => {
-  //   console.log(chalk.gray('started rollup build'));
-
-  //   const watcher = rollup.rollup(o);
-
-  // })
   .catch(console.error);
-
-// spawn('rollup', ['-c', '--watch', '--environment=BUILD:development'], { stdio: 'inherit' });
