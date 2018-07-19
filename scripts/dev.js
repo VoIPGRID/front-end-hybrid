@@ -43,5 +43,3 @@ del([join(__dirname, '..', outputDirectory, '*')])
     watcher.on('event', eventLogger);
   })
   .catch(console.error);
-
-// spawn('rollup', ['-c', '--watch', '--environment=BUILD:development'], { stdio: 'inherit' });

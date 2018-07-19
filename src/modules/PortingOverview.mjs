@@ -22,7 +22,7 @@ class PortingRequestsOverview extends Component {
 
     this.state = { loading: true };
     fetch(
-      'http://localhost:8888/api/v2/partners/0a18b426-f823-4eda-86e4-c9b65b0ace02/porting_requests/inbound',
+      'http://localhost:8888/api/v2/partners/04e55b29-bbed-436b-b1a1-7d28d128e019/porting_requests/inbound',
       {
         mode: 'cors',
         credentials: 'include',
