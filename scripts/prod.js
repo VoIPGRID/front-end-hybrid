@@ -1,5 +1,6 @@
 process.env.BUILD = 'production';
 
+const cpy = require('cpy');
 const chalk = require('chalk');
 const del = require('del');
 const rollup = require('rollup');
@@ -104,5 +105,7 @@ del([join(__dirname, '..', outputDirectory, '*')])
   })
   .then(() => {
     console.log(chalk.green('finished rollup build'));
+
+    return cpy([join(__dirname, '..', 'netlify.config', '*')], join(__dirname, '..', outputDirectory));
   })
   .catch(console.error);
