@@ -1,9 +1,11 @@
 # frontend-hybrid
-Project with the front end applications for the hybrid situation
+Project with the front end applications for the VoIPGRID hybrid scenario.
 
 # General approach
-This project uses Rollup to create an EcmaScript module version (.mjs) and a transpiled JavaScript version of modules (.js) from the files in the src/modules and the src/shared directories.
+This project uses Rollup to create an Ecmascript module version (.mjs) and a transpiled JavaScript version of modules (.js) from the files in the src/modules and the src/shared directories.
 During development it spins up a local webserver to serve these modules so they can be loaded by using ```<script type="module" src="./path-to/some-module.mjs"></script>``` or by using ```import { someThing } from './path-to/some-module.mjs';``` in a native Ecmascript module.
+
+At the moment this project uses a custom patched version of the React library to add ```export```'s so they can be loaded as Ecmascript modules. To minimize risks it patches the UMD version of React (in both the development and the minified version). The UMD part is removed, and it stores the return value of the factory function inside a local ```const React;``` which is later exported together with its properties. This is also done for the ReactDOM script, and in the ReactDOM script ```import react from 'react';``` is added which is later changed by Rollup to the URI through which that script can be loaded.
 
 # Development
 clone this repo and run ```$ npm i``` to install all dependencies, than run ```$ npm start``` to start development.
