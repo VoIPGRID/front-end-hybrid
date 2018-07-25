@@ -1,7 +1,7 @@
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
-const { extname, basename } = require('path');
+const { extname, basename, join } = require('path');
 
 const settings = require('./settings');
 const { paths, external } = require('./sharedProperties');
@@ -12,6 +12,7 @@ module.exports = function getEcmaScriptConfig(
   outputDirectory = settings.outputDirectory
 ) {
   const baseName = basename(filePath, extname(filePath));
+  const watchDir = join.apply(null, filePath.split('/').slice(0,2).concat(['**']));
 
   return {
     input: filePath,
@@ -35,7 +36,7 @@ module.exports = function getEcmaScriptConfig(
       commonjs()
     ],
     watch: {
-      include: filePath,
+      include: watchDir,
       clearScreen: false
     }
   };

@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="./voipgrid_files/style.css">
 
     <!-- preloading the React and ReactDOM modules when browser supports it -->
-    <link rel="modulepreload" href="/vendor/react.development-16.4.1.mjs">
-    <link rel="modulepreload" href="/vendor/react-dom.development-16.4.1.mjs">
+    <link rel="modulepreload" href="/vendor/react.development.mjs">
+    <link rel="modulepreload" href="/vendor/react-dom.development.mjs">
     <!-- /preloading the React and ReactDOM modules when browser supports it -->
 </head>
 <body>
@@ -117,8 +117,8 @@ React && ReactDOM && ReactDOM.render(React.createElement(VoIPGRID.PortingOvervie
 <!-- ecmascript module supporting browsers -->
 <!-- ONCE PER HYBRID FRONT END APP -->
 <script type="module">
-import { createElement } from './vendor/react.development-16.4.1.mjs';
-import { render } from './vendor/react-dom.development-16.4.1.mjs';
+import { createElement } from './vendor/react.development.mjs';
+import { render } from './vendor/react-dom.development.mjs';
 import Component from './PortingOverview.mjs';
 
 render(createElement(Component), document.getElementById('porting-overview'));

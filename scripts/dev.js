@@ -8,6 +8,7 @@ const { join } = require('path');
 // const { spawn } = require('child_process');
 const serveStatic = require('serve-static');
 
+const prepareReact = require('./prepareReact');
 const getConfiguration = require('../rollup-config-helpers/getConfiguration');
 const { outputDirectory } = require('../rollup-config-helpers/settings');
 const eventLogger = require('../rollup-config-helpers/eventLogger');
@@ -30,9 +31,20 @@ app.listen(port);
 console.log(chalk.gray(`started webserver on localhost:${chalk.yellow(port)}`));
 console.log(chalk.gray(`process.env.BUILD: ${chalk.yellow(process.env.BUILD)}`));
 
-del([join(__dirname, '..', outputDirectory, '*')])
+del([join(__dirname, '..', outputDirectory), join(__dirname, '..', '.temp')])
+  .then(dirs => {
+    console.log(
+      chalk.gray(
+        `removed the following directories: ${dirs
+          .map(dir => dir.replace(join(__dirname, '..'), ''))
+          .join(', ')}`
+      )
+    );
+    console.log(chalk.gray(`Preparing the react and react-dom libraries`));
+  })
+  .then(prepareReact)
   .then(() => {
-    console.log(chalk.gray(`removed the contents of the /${outputDirectory} directory`));
+    console.log(chalk.gray(`mjs versions created and copied to .temp, js versions copied to /${outputDirectory}/vendor`));
     return getConfiguration();
   })
   .then(o => {

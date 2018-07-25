@@ -3,11 +3,11 @@ const settings = require('./settings');
 const getOutputPath = require('./getOutputPath');
 
 function getEnvironmentSuffix () {
-  return process.env.BUILD === 'development' ? '.development' : '';
+  return process.env.BUILD === 'development' ? '.development' : 'production.min';
 }
 const paths = {
-  react: `${settings.serveModulesFrom}vendor/react${getEnvironmentSuffix()}-${settings.reactVersion}.mjs`,
-  'react-dom': `${settings.serveModulesFrom}vendor/react-dom${getEnvironmentSuffix()}-${settings.reactVersion}.mjs`
+  react: `${settings.serveModulesFrom}vendor/react${getEnvironmentSuffix()}.mjs`,
+  'react-dom': `${settings.serveModulesFrom}vendor/react-dom${getEnvironmentSuffix()}.mjs`
 };
 const globals = {
   react: 'React',

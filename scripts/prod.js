@@ -6,6 +6,7 @@ const del = require('del');
 const rollup = require('rollup');
 const { join } = require('path');
 
+const prepareReact = require('./prepareReact');
 const getConfiguration = require('../rollup-config-helpers/getConfiguration');
 const { outputDirectory } = require('../rollup-config-helpers/settings');
 
@@ -88,9 +89,20 @@ function convertConfigs(configs) {
 
 console.log(chalk.gray(`process.env.BUILD: ${chalk.yellow(process.env.BUILD)}`));
 
-del([join(__dirname, '..', outputDirectory, '*')])
+del([join(__dirname, '..', outputDirectory), join(__dirname, '..', '.temp')])
+  .then(dirs => {
+    console.log(
+      chalk.gray(
+        `removed the following directories: ${dirs
+          .map(dir => dir.replace(join(__dirname, '..'), ''))
+          .join(', ')}`
+      )
+    );
+    console.log(chalk.gray(`Preparing the react and react-dom libraries`));
+  })
+  .then(prepareReact)
   .then(() => {
-    console.log(chalk.gray(`removed the contents of the /${outputDirectory} directory`));
+    console.log(chalk.gray(`mjs versions created and copied to .temp, js versions copied to /${outputDirectory}/vendor`));
     return getConfiguration();
   })
   .then(convertConfigs)
@@ -106,6 +118,9 @@ del([join(__dirname, '..', outputDirectory, '*')])
   .then(() => {
     console.log(chalk.green('finished rollup build'));
 
-    return cpy([join(__dirname, '..', 'netlify.config', '*')], join(__dirname, '..', outputDirectory));
+    return cpy(
+      [join(__dirname, '..', 'netlify.config', '*')],
+      join(__dirname, '..', outputDirectory)
+    );
   })
   .catch(console.error);
