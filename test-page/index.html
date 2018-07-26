@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Default partner - Porting requests</title>
+    <link rel="stylesheet" href="./voipgrid_files/vendor.css">
+    <link rel="stylesheet" href="./voipgrid_files/brand.css">
+    <link rel="stylesheet" href="./voipgrid_files/hybrid.css">
+    <link rel="stylesheet" href="./voipgrid_files/base-admin-responsive.css">
+    <link rel="stylesheet" href="./voipgrid_files/style.css">
+
+    <!-- preloading the React and ReactDOM modules when browser supports it -->
+    <link rel="modulepreload" href="/vendor/react.development.mjs">
+    <link rel="modulepreload" href="/vendor/react-dom.development.mjs">
+    <!-- /preloading the React and ReactDOM modules when browser supports it -->
+</head>
+<body>
+    <div class="vg-wrapper">
+        <header class="vg-app-header">
+            <a href="http://localhost:8001/" class="vg-app-header-logo"><img src="./voipgrid_files/logo-default.png" class="vg-app-header-logo"></a>
+            <ul class="vg-navigation-top">
+                <li>
+                    <select id="js-select-brand" class="vg-form-input select3" tabindex="-98">
+                        <optgroup label="Branded Partners">
+                            <option value="540100" selected="">Default partner</option>
+                            <option value="540102">Showcase color branding</option>
+                        </optgroup>
+                    </select>
+                    <div class="btn-group select3 show-tick vg-form-input"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="js-select-brand" title="Default partner"><span class="filter-option pull-left">Default partner</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open"><ul class="dropdown-menu inner" role="menu"><li class="dropdown-header " data-optgroup="1"><span class="text">Branded Partners</span></li><li data-original-index="0" data-optgroup="1" data-optgroup-index="0" class="selected"><a tabindex="0" class="opt  " style="" data-tokens="null"><span class="text">Default partner</span><span class="icon icon-ok check-mark"></span></a></li><li data-original-index="1" data-optgroup="1" data-optgroup-index="1"><a tabindex="0" class="opt  " style="" data-tokens="null"><span class="text">Showcase color branding</span><span class="icon icon-ok check-mark"></span></a></li></ul></div></div>
+                </li>
+                <li>
+                    <a id="wiki-url" data-category="button" data-label="Support icon" target="_blank" href="http://lara-baker.biz/index.php/PortingRequest" class="ga-event" rel="noopener noreferrer"><i class="icon-question-sign"></i> Support</a>
+                </li>
+                <li class="vg-dropdown-navigation">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> Partner account <b class="caret"></b></a>
+                    <ul class="vg-dropdown-navigation-sub">
+                        <li class="vg-dropdown-navigation-subitem">
+                            <a href="javascript:void(0)">Billing</a>
+                            <ul class="vg-dropdown-navigation-sub">
+                                <li><a href="http://localhost:8001/partner/540100/billing/callbillingitem/">Call cost</a></li>
+                                <li><a href="http://localhost:8001/partner/540100/billing/subscriptionbillingitem/">Billed services</a></li>
+                                <li><a href="http://localhost:8001/partner/540100/billing/prepaid/">Prepaid</a></li>
+                                <li><a href="http://localhost:8001/export/">Downloads</a></li>
+                            </ul>
+                        </li>
+                        <li class="vg-dropdown-navigation-subitem">
+                            <a href="javascript:void(0)">Beheer</a>
+                            <ul class="vg-dropdown-navigation-sub">
+                                <li><a href="http://localhost:8001/billing/subscription/">Used services</a></li>
+                                <li><a href="http://localhost:8001/billing/product/">Product overview</a></li>
+                                <li><a href="http://localhost:8001/billing/priceplan/">Priceplans</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="vg-dropdown-navigation">
+                    <a href="javascript:void(0)" data-toggle="dropdown"><i class="icon-user"></i> Personal <b class="caret"></b></a>
+                    <ul class="vg-dropdown-navigation-sub">
+                        <li><a href="http://localhost:8001/user/personal_settings/">Personal settings</a></li>
+                        <li><a href="http://localhost:8001/user/logout/">Afmelden</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <nav role="navigation" aria-label="Main Navigation" class="vg-navigation-wrapper">
+            <div class="vg-navigation-mobile-toggle">
+                <a href="http://localhost:8001/porting/overview#" class="js-open-mobile-nav-settings"><i class="icon-cog"></i></a>
+                <a href="http://localhost:8001/porting/overview#" class="js-open-mobile-nav">
+                    <span class="vg-hamburger-nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </a>
+            </div>
+            <ul class="vg-navigation">
+                <li class="active"><a href="http://localhost:8001/partner/" class="vg-navigation-link"><i class="icon-group"></i> <span>Partners</span></a></li>
+                <li><a href="http://localhost:8001/client/" class="vg-navigation-link"> <i class="icon-user"></i> <span>Clients</span> </a></li>
+                <li><a href="http://localhost:8001/partner/540100/phoneorder/" class="vg-navigation-link"> <i class="icon-shopping-cart"></i> <span>Orders</span></a></li>
+                <li><a href="http://localhost:8001/partner/540100/stats/" class="vg-navigation-link"> <i class="icon-signal"></i> <span>Partner statistics</span></a></li>
+                <li><a href="http://localhost:8001/partner/540100/call/" class="vg-navigation-link"> <i class="icon-comments"></i> <span>Calls</span></a></li>
+                <li></li>
+            </ul>
+        </nav>
+        <nav aria-label="Breadcrumb">
+            <ol class="vg-breadcrumb vg-list-inline">
+                <li class="vg-list-inline-item"><a href="http://localhost:8001/" class="vg-breadcrumb-home">Voorpagina</a></li>
+                <li class="vg-list-inline-item"><a href="http://localhost:8001/partner/" class="vg-breadcrumb-link">Partners</a></li>
+                <li class="vg-list-inline-item"><a href="http://localhost:8001/client/" class="vg-breadcrumb-link">Clients</a></li>
+                <li class="vg-list-inline-item" aria-current="page"><a href="http://localhost:8001/porting/overview" class="vg-breadcrumb-link">Porting requests</a></li>
+            </ol>
+        </nav>
+        <main><div id="porting-overview"></div></main>
+    </div>
+
+<!-- none ecmascript module supporting browsers -->
+
+<!-- ONCE PER PAGE THAT HAS HYBRID FRONT END APPS -->
+<script nomodule src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script nomodule src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<!-- /ONCE PER PAGE THAT HAS HYBRID FRONT END APPS -->
+
+<!-- ONCE PER TYPE OF HYBRID FRONT END APP -->
+<script nomodule src="/PortingOverview.js"></script>
+<!-- /ONCE PER TYPE OF HYBRID FRONT END APP -->
+
+<!-- ONCE PER HYBRID FRONT END APP -->
+<script nomodule>
+React && ReactDOM && ReactDOM.render(React.createElement(VoIPGRID.PortingOverview), document.getElementById('porting-overview'));
+</script>
+<!-- /ONCE PER HYBRID FRONT END APP -->
+
+<!-- END none ecmascript module supporting browsers -->
+
+<!-- ecmascript module supporting browsers -->
+<!-- ONCE PER HYBRID FRONT END APP -->
+<script type="module">
+import { createElement } from './vendor/react.development.mjs';
+import { render } from './vendor/react-dom.development.mjs';
+import Component from './PortingOverview.mjs';
+
+render(createElement(Component), document.getElementById('porting-overview'));
+</script>
+<!-- /ONCE PER HYBRID FRONT END APP -->
+<!-- END ecmascript module supporting browsers -->
+
+</body>
+</html>
