@@ -16,16 +16,16 @@ const makeDir = require('make-dir');
 const cpy = require('cpy');
 const replace = require('replace-in-file');
 const { join } = require('path');
-const { outputDirectory } = require('../rollup-config-helpers/settings');
+const { outputDirectory, serveModulesFrom } = require('../rollup-config-helpers/settings');
 const { reactExports, reactDomExports } = require('./exportedProperties');
 
-
-const reactImportString = "import React from 'react';\n";
-const reactExportsString = `const {${reactExports.join(', ')}} = React;
+const reactExportsString = `
+const {${reactExports.join(', ')}} = React;
 export default React;
 export {${reactExports.join(', ')}};`;
 
-const reactDomExportsString = `const {${reactDomExports.join(', ')}} = ReactDOM;
+const reactDomExportsString = `
+const {${reactDomExports.join(', ')}} = ReactDOM;
 export default ReactDOM;
 export {${reactDomExports.join(', ')}};`;
 
@@ -113,7 +113,7 @@ module.exports = function() {
           ],
           to: [
             // add the import react statement at the beginnign of the file
-            reactImportString,
+            `import React from '${process.env.BUILD === 'development' ? 'react' : `${serveModulesFrom}vendor/react.development.mjs`}';\n`,
 
             // replacement for the beginning of the UMD wrapper
             'const ReactDOM = ',
@@ -138,7 +138,7 @@ module.exports = function() {
           ],
           to: [
             // add the import react statement at the beginnign of the file
-            reactImportString,
+            `import React from '${process.env.BUILD === 'development' ? 'react' : `${serveModulesFrom}vendor/react.production.min.mjs`}';\n`,
 
             // replacement for the beginning of the UMD wrapper
             'const ReactDOM = (',

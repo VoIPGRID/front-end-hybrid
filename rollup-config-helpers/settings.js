@@ -8,6 +8,6 @@ module.exports = {
   // exclude these files from the modules and shared modules directories
   excludedFilenames: ['.DS_Store'],
 
-  // root uri which the mddules are served from
-  serveModulesFrom: process.env.BUILD === 'development' ? '/' : 'https://ecmascriptmodules.com/'
+  // root uri which the modules are served from
+  serveModulesFrom: process.env.BUILD === 'development' ? '/' : 'https://ecmascriptmodules.com/',
 };
