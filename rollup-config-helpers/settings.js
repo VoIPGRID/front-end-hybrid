@@ -9,5 +9,5 @@ module.exports = {
   excludedFilenames: ['.DS_Store'],
 
   // root uri which the mddules are served from
-  serveModulesFrom: process.env.BUILD === 'development' ? '/' : 'https://modules.voipgrid.nl/'
+  serveModulesFrom: process.env.BUILD === 'development' ? '/' : 'https://ecmascriptmodules.com/'
 };
