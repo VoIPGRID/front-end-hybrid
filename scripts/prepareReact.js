@@ -113,7 +113,13 @@ module.exports = function() {
           ],
           to: [
             // add the import react statement at the beginnign of the file
-            `import React from '${process.env.BUILD === 'development' ? 'react' : `${serveModulesFrom}vendor/react.development.mjs`}';\n`,
+            // 'react' gets rewritten to whatever is set as external in the generated Rollup configuration during development
+            // in production scenarios React needs to be imported from their own url's (production.min from produciton.min and development from development)
+            `import React from '${
+              process.env.BUILD === 'development'
+                ? 'react'
+                : `${serveModulesFrom}vendor/react.development.mjs`
+            }';\n`,
 
             // replacement for the beginning of the UMD wrapper
             'const ReactDOM = ',
@@ -138,7 +144,13 @@ module.exports = function() {
           ],
           to: [
             // add the import react statement at the beginnign of the file
-            `import React from '${process.env.BUILD === 'development' ? 'react' : `${serveModulesFrom}vendor/react.production.min.mjs`}';\n`,
+            // 'react' gets rewritten to whatever is set as external in the generated Rollup configuration during development
+            // in production scenarios React needs to be imported from their own url's (production.min from produciton.min and development from development)
+            `import React from '${
+              process.env.BUILD === 'development'
+                ? 'react'
+                : `${serveModulesFrom}vendor/react.production.min.mjs`
+            }';\n`,
 
             // replacement for the beginning of the UMD wrapper
             'const ReactDOM = (',
