@@ -122,5 +122,9 @@ del([join(__dirname, '..', outputDirectory), join(__dirname, '..', '.temp')])
       [join(__dirname, '..', 'netlify.config', '*')],
       join(__dirname, '..', outputDirectory)
     );
+    console.log(chalk.green('copied Netlify configurations'));
   })
-  .catch(console.error);
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

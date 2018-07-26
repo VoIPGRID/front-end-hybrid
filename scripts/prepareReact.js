@@ -1,61 +1,33 @@
+/**
+ * This script is used by both the dev.js and the prod.js scripts to prepare the react and react-dom
+ * NPM modules into ecmascript modules wiht an mjs extension.
+ * The UMD versions are being used for that as an input and the UMD wrapper is removed and exports
+ * are added.
+ *
+ * This approach was found to be better than either patching it by hand and having the sources in
+ * this repo or building it from the React source ourselves (which proved to be problematic since
+ * the internals of React and ReactDOM are frequently changing)
+ *
+ * Rollup seems to not be able to change the "import from" uri in the react-dom module when the
+ * import statement is added by using the output.intro setting so this is a two step process
+ *
+ */
 const makeDir = require('make-dir');
 const cpy = require('cpy');
 const replace = require('replace-in-file');
 const { join } = require('path');
 const { outputDirectory } = require('../rollup-config-helpers/settings');
+const { reactExports, reactDomExports } = require('./exportedProperties');
 
-const reactImport = "import React from 'react';\n";
-const ReactExports = `
-const {
-  Component,
-  PureComponent,
-  unstable_AsyncComponent,
-  Fragment,
-  createElement,
-  cloneElement,
-  createFactory,
-  isValidElement,
-  version
-} = React;
 
+const reactImportString = "import React from 'react';\n";
+const reactExportsString = `const {${reactExports.join(', ')}} = React;
 export default React;
-export {
-  Component,
-  PureComponent,
-  unstable_AsyncComponent,
-  Fragment,
-  createElement,
-  cloneElement,
-  createFactory,
-  isValidElement,
-  version
-};`
-const ReactDomExports = `
-const {
-  createPortal,
-  findDOMNode,
-  hydrate,
-  render,
-  unstable_renderSubtreeIntoContainer,
-  unmountComponentAtNode,
-  unstable_createPortal,
-  unstable_batchedUpdates,
-  unstable_deferredUpdates,
-  flushSync
-} = ReactDOM;
+export {${reactExports.join(', ')}};`;
+
+const reactDomExportsString = `const {${reactDomExports.join(', ')}} = ReactDOM;
 export default ReactDOM;
-export {
-  createPortal,
-  findDOMNode,
-  hydrate,
-  render,
-  unstable_renderSubtreeIntoContainer,
-  unmountComponentAtNode,
-  unstable_createPortal,
-  unstable_batchedUpdates,
-  unstable_deferredUpdates,
-  flushSync
-};`
+export {${reactDomExports.join(', ')}};`;
 
 module.exports = function() {
   return makeDir(join(__dirname, '..', '.temp'))
@@ -91,70 +63,90 @@ module.exports = function() {
         // react.development.mjs
         replace({
           files: join(__dirname, '..', '.temp', 'react.development.mjs'),
-          from: /'use strict';[^]*\(global\.React = factory\(\)\);\n\}\(this, /m,
-          to: 'const React = '
-        }).then(() =>
-          replace({
-            files: join(__dirname, '..', '.temp', 'react.development.mjs'),
-            from: /^\}\)\)\);$/m,
-            to: `}());${ReactExports}`
-          })
-        ),
+          from: [
+            // selects the beginning of the UMD wrapper
+            /'use strict';[^]*\(global\.React = factory\(\)\);\n\}\(this, /m,
+
+            // selects the end of the UMD wrapper
+            /^\}\)\)\);$/m
+          ],
+          to: [
+            // replacement for the beginning of the UMD wrapper
+            'const React = ',
+
+            // replacement for the end of the UMD wrapper
+            `}());${reactExportsString}`
+          ]
+        }),
 
         // react.production.min.mjs
         replace({
           files: join(__dirname, '..', '.temp', 'react.production.min.mjs'),
-          from: /'use strict';.*define\(h\):p.React=h\(\)\}\)\(this,/m,
-          to: 'const React = ('
-        }).then(() =>
-          replace({
-            files: join(__dirname, '..', '.temp', 'react.production.min.mjs'),
-            from: /\}\);$\n/m,
-            to: `}());${ReactExports}`
-          })
-        ),
+          from: [
+            // selects the beginning of the UMD wrapper
+            /'use strict';.*define\(h\):p\.React=h\(\)\}\)\(this,/m,
+
+            // selects the end of the UMD wrapper
+            /\}\);$\n/m
+          ],
+          to: [
+            // replacement for the beginning of the UMD wrapper
+            'const React = (',
+
+            // replacement for the end of the UMD wrapper
+            `}());${reactExportsString}`
+          ]
+        }),
 
         // react-dom.development.mjs
         replace({
           files: join(__dirname, '..', '.temp', 'react-dom.development.mjs'),
-          from: /^/,
-          to: reactImport
-        })
-          .then(() =>
-            replace({
-              files: join(__dirname, '..', '.temp', 'react-dom.development.mjs'),
-              from: /'use strict';[^]*factory\(global.React\)\);\n\}\(this, /m,
-              to: 'const ReactDOM = '
-            })
-          )
-          .then(() =>
-            replace({
-              files: join(__dirname, '..', '.temp', 'react-dom.development.mjs'),
-              from: /^\}\)\)\);$/m,
-              to: `}(React));${ReactDomExports}`
-            })
-          ),
+          from: [
+            // select the beginning of the file
+            /^/,
+
+            // selects the beginning of the UMD wrapper
+            /'use strict';[^]*factory\(global\.React\)\);\n\}\(this, /m,
+
+            // selects the end of the UMD wrapper
+            /^\}\)\)\);$/m
+          ],
+          to: [
+            // add the import react statement at the beginnign of the file
+            reactImportString,
+
+            // replacement for the beginning of the UMD wrapper
+            'const ReactDOM = ',
+
+            // replacement for the end of the UMD wrapper
+            `}(React));${reactDomExportsString}`
+          ]
+        }),
 
         // react-dom.production.min.mjs
         replace({
           files: join(__dirname, '..', '.temp', 'react-dom.production.min.mjs'),
-          from: /^/,
-          to: reactImport
+          from: [
+            // select the beginning of the file
+            /^/,
+
+            // selects the beginning of the UMD wrapper
+            /'use strict';[^]*ma\.React\)\}\)\(this,/m,
+
+            // selects the end of the UMD wrapper
+            /\}\);$/m
+          ],
+          to: [
+            // add the import react statement at the beginnign of the file
+            reactImportString,
+
+            // replacement for the beginning of the UMD wrapper
+            'const ReactDOM = (',
+
+            // replacement for the end of the UMD wrapper
+            `}(React));${reactDomExportsString}`
+          ]
         })
-          .then(() =>
-            replace({
-              files: join(__dirname, '..', '.temp', 'react-dom.production.min.mjs'),
-              from: /'use strict';[^]*ma\.React\)\}\)\(this,/m,
-              to: 'const ReactDOM = ('
-            })
-          )
-          .then(() =>
-            replace({
-              files: join(__dirname, '..', '.temp', 'react-dom.production.min.mjs'),
-              from: /\}\);$/m,
-              to: `}(React));${ReactDomExports}`
-            })
-          )
       ])
     );
 };

@@ -1,3 +1,6 @@
+/**
+ * This script is used to create a rollup config for an ecmascript version of a module
+ */
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');

@@ -5,7 +5,6 @@ const del = require('del');
 const express = require('express');
 const rollup = require('rollup');
 const { join } = require('path');
-// const { spawn } = require('child_process');
 const serveStatic = require('serve-static');
 
 const prepareReact = require('./prepareReact');
@@ -23,7 +22,7 @@ app.use((req, res, next) => {
   console.log(chalk.gray(`[${req.method}] ${req.url}`));
   next();
 });
-// also server files from the outputDirectory (that's where the moduels are copied to)
+// also server files from the outputDirectory (that's where the modules are copied to)
 app.use(serveStatic(join(__dirname, '..', outputDirectory)));
 
 app.listen(port);
@@ -44,7 +43,11 @@ del([join(__dirname, '..', outputDirectory), join(__dirname, '..', '.temp')])
   })
   .then(prepareReact)
   .then(() => {
-    console.log(chalk.gray(`mjs versions created and copied to .temp, js versions copied to /${outputDirectory}/vendor`));
+    console.log(
+      chalk.gray(
+        `mjs versions created and copied to the .temp directory, js versions copied to /${outputDirectory}/vendor`
+      )
+    );
     return getConfiguration();
   })
   .then(o => {
@@ -54,4 +57,7 @@ del([join(__dirname, '..', outputDirectory), join(__dirname, '..', '.temp')])
 
     watcher.on('event', eventLogger);
   })
-  .catch(console.error);
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

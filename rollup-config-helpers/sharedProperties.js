@@ -1,8 +1,12 @@
+/**
+ * This script keeps the properties which are shared throughout the created configurations for IIFE and Ecmascript modules
+ *
+ */
 const { join, extname } = require('path');
 const settings = require('./settings');
 const getOutputPath = require('./getOutputPath');
 
-function getEnvironmentSuffix () {
+function getEnvironmentSuffix() {
   return process.env.BUILD === 'development' ? '.development' : 'production.min';
 }
 const paths = {

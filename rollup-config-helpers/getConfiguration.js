@@ -28,28 +28,28 @@ const readDirectory = promisify(readdir);
 // path to load it from
 const outputDefault = [
   {
-  input: [
-    // `src/vendor/react.development-${settings.reactVersion}.mjs`,
-    // `src/vendor/react-dom.development-${settings.reactVersion}.mjs`,
-    // `src/vendor/react-${settings.reactVersion}.mjs`,
-    // `src/vendor/react-dom-${settings.reactVersion}.mjs`
-    `.temp/react.development.mjs`,
-    `.temp/react-dom.development.mjs`,
-    `.temp/react.production.min.mjs`,
-    `.temp/react-dom.production.min.mjs`
-  ],
-  experimentalCodeSplitting: true,
-  output: {
-    dir: join(settings.outputDirectory, 'vendor'),
-    entryFileNames: '[name].mjs',
-    format: 'es',
-    paths
-  },
-  onwarn,
-  external,
-  plugins: [resolve(), commonjs()],
-  watch: false
-}
+    input: [
+      // `src/vendor/react.development-${settings.reactVersion}.mjs`,
+      // `src/vendor/react-dom.development-${settings.reactVersion}.mjs`,
+      // `src/vendor/react-${settings.reactVersion}.mjs`,
+      // `src/vendor/react-dom-${settings.reactVersion}.mjs`
+      `.temp/react.development.mjs`,
+      `.temp/react-dom.development.mjs`,
+      `.temp/react.production.min.mjs`,
+      `.temp/react-dom.production.min.mjs`
+    ],
+    experimentalCodeSplitting: true,
+    output: {
+      dir: join(settings.outputDirectory, 'vendor'),
+      entryFileNames: '[name].mjs',
+      format: 'es',
+      paths
+    },
+    onwarn,
+    external,
+    plugins: [resolve(), commonjs()],
+    watch: false
+  }
 ];
 
 module.exports = function() {

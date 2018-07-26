@@ -8,8 +8,6 @@ module.exports = function(err) {
     message,
     url,
     modules,
-    // loc,
-    // frame,
     importer,
     ...rest
   } = err;
