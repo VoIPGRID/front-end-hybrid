@@ -29,10 +29,6 @@ const readDirectory = promisify(readdir);
 const outputDefault = [
   {
     input: [
-      // `src/vendor/react.development-${settings.reactVersion}.mjs`,
-      // `src/vendor/react-dom.development-${settings.reactVersion}.mjs`,
-      // `src/vendor/react-${settings.reactVersion}.mjs`,
-      // `src/vendor/react-dom-${settings.reactVersion}.mjs`
       `.temp/react.development.mjs`,
       `.temp/react-dom.development.mjs`,
       `.temp/react.production.min.mjs`,
