@@ -14,20 +14,23 @@ const { promisify } = require('util');
 const makeDir = require('make-dir');
 const cpy = require('cpy');
 const reactEcmascript = require('react-ecmascript');
-const { join } = require('path');
+const { join, dirname } = require('path');
 const { outputDirectory, serveModulesFrom } = require('../rollup-config-helpers/settings');
 
 const write = promisify(fs.writeFile);
 
 module.exports = function() {
+  const reactDirectory = dirname(require.resolve('react'));
+  const reactDOMDirectory = dirname(require.resolve('react-dom'));
+
   return makeDir(join(__dirname, '..', '.temp'))
     .then(() =>
       cpy(
         [
-          join(__dirname, '..', 'node_modules', 'react', 'umd', 'react.development.js'),
-          join(__dirname, '..', 'node_modules', 'react', 'umd', 'react.production.min.js'),
-          join(__dirname, '..', 'node_modules', 'react-dom', 'umd', 'react-dom.development.js'),
-          join(__dirname, '..', 'node_modules', 'react-dom', 'umd', 'react-dom.production.min.js')
+          join(reactDirectory, 'umd', 'react.development.js'),
+          join(reactDirectory, 'umd', 'react.production.min.js'),
+          join(reactDOMDirectory, 'umd', 'react-dom.development.js'),
+          join(reactDOMDirectory, 'umd', 'react-dom.production.min.js')
         ],
         join(__dirname, '..', outputDirectory, 'vendor')
       )
